@@ -1,22 +1,23 @@
 import { Button } from "@/components/Button";
 import { AnimatedBorderButton } from "@/components/AnimatedBorderButton";
 import { FloatingParticles } from "@/components/FloatingParticles";
-import { ArrowRight, Download, ChevronDown, Linkedin, Github, Instagram } from "lucide-react";
+import { ArrowRight, ChevronDown, Download } from "lucide-react";
 import { socialLinks } from "../lib/socialLinks";
 
 
 
 const skills = [
-    "Langchain",
-    "Streamlit",
-    "Django",
-    "React",
+    "LangGraph",
+    "LangChain",
+    "FastMCP",
+    "RAG",
+    "Text2SQL",
+    "FastAPI",
     "PostgreSQL",
-    "MongoDB",
-    "Selenium",
+    "BigQuery",
     "Pandas",
-    "Pytorch",
-    "RAG"
+    "Docker",
+    "GCP"
 ];
 
 export const Hero = () => {
@@ -35,7 +36,7 @@ export const Hero = () => {
                         <div className='animate-fade-in'>
                             <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass text-sm text-gray">
                                 <span className="w-2 h-2 bg-tertiary rounded-full animate-pulse" />
-                                Data Science・Japanese Education
+                                AI & Data Engineering・Open to internships in Germany
                             </span>
                         </div>
 
@@ -51,7 +52,7 @@ export const Hero = () => {
 
                             {/* paragraph */}
                             <p className='text-lg text-muted-foreground max-w-lg animate-fade-in animation-delay-200'>
-                                Analytical, sociable, and compassionate, I thrive in solving challenges while connecting deeply with people.
+                                M.Sc. Business Informatics student in Mannheim, building LLM-powered data systems. Looking for an internship in Germany starting Feb 2027 (student visa, up to 20 h/week).
                             </p>
                         </div>
 
@@ -66,7 +67,7 @@ export const Hero = () => {
                             </Button>
                             <AnimatedBorderButton 
                                 className="transition-all duration-300"
-                                onClick={() => window.open('/cv.pdf', '_blank')}
+                                onClick={() => window.open('/CV_Chun_Huang-Lin.pdf', '_blank')}
                             >
                                 Download CV<Download className="w-5 h-5"></Download>
                                 
@@ -115,8 +116,8 @@ export const Hero = () => {
 
                                 {/* Stats Badge */}
                                 <div className="absolute -top-4 -left-4 glass rounded-xl px-4 py-3 animate-float animateion-delay-400">
-                                    <div className="text-2xl font-bold text-primary"> 1+</div>
-                                    <div className="text-xs text-muted-foreground">Year Exp.</div>
+                                    <div className="text-2xl font-bold text-primary"> 2</div>
+                                    <div className="text-xs text-muted-foreground">Years Exp. in Data & AI</div>
                                 </div>
                 
 

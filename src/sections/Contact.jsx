@@ -9,14 +9,14 @@ const contactInfo = [
     {
         icon: Mail,
         label: "Email",
-        value: "huang0jin@gmail.com",
-        href: "mailto:huang0jin@gmail.com"
+        value: "huanglinchun847@gmail.com",
+        href: "mailto:huanglinchun847@gmail.com"
     },
     {
         icon: MapPin,
         label: "Location",
-        value: "Taipei, Taiwan",
-        href: "https://www.google.com/maps/place/%E8%87%BA%E5%8C%97/@25.0168615,121.176034,10z/data=!3m1!4b1!4m6!3m5!1s0x3442ac72bce20a99:0x3f6a35cedd0ac2e0!8m2!3d25.0329694!4d121.5654177!16s%2Fg%2F1q5bldlsj?entry=ttu&g_ep=EgoyMDI2MDIwMS4wIKXMDSoASAFQAw%3D%3D"
+        value: "Mannheim, Germany",
+        href: "https://www.google.com/maps/place/Mannheim,+Germany"
     }
 ]
 

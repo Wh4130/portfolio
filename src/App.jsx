@@ -1,6 +1,7 @@
 import { Hero } from "@/sections/Hero";
 import { About } from "@/sections/About";
 import { Contact } from "@/sections/Contact";
+import { Highlights } from "@/sections/Highlights";
 import { Experience } from "@/sections/Experience";
 import { Projects } from "@/sections/Projects";
 import { Navbar } from "@/layout/Navbar";
@@ -19,6 +20,7 @@ function App() {
       <main>
         <Hero/>
         <About/>
+        <Highlights/>
         <Experience/>
         <Projects/>
         <Contact/>

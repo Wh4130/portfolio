@@ -3,18 +3,18 @@ import { Code2, Rocket, Handshake, Blend, Earth } from "lucide-react";
 const Highlights = [
     {
         icon: Blend,
-        title: "Multi-disciplinary background",
-        description: "My education spans Economics, Political Science, and Data Science, providing me with a unique lens to view the digital landscape. I am skilled in both the theoretical foundations of digital technology and the strategic evaluation of its practical possibilities and limitations."
+        title: "Research meets engineering",
+        description: "Economics, Political Science and Data Science training, plus hands-on LLM work: I co-authored TW-LegalBench (ICAIL 2026), the first benchmark evaluating LLMs on Taiwanese law, and ship production data and agent systems."
     },
     {
         icon: Earth,
         title: "Multi-lingual proficiency",
-        description: "Ex atque nesciunt hic suscipit! Illum sequi quia libero explicabo placeat sapiente voluptatibus nemo."
+        description: "Fluent in Mandarin (native), English (C1) and Japanese (C1), with German (A1) in progress. Interpreted for Japanese client visits and studied across Taipei, Tokyo and Mannheim."
     },
     {
         icon: Handshake,
         title: "Collaborative and Leadership",
-        description: "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Consequatur repudiandae ad deserunt neque expedita labore quas, ipsum cumque necessitatibus minus illum amet! Asperiores maxime corrupti consectetur quasi adipisci eveniet qui?"
+        description: "Led a 12-person research assistant team, and coordinated 14 volunteers in an English camp for rural Taiwan, funded by a Ministry of Education youth grant."
     }
 ];
 

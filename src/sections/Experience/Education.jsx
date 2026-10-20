@@ -1,3 +1,4 @@
+import { ExternalLink } from "lucide-react"
 import { educationHistory } from "../../lib/experience"
 
 
@@ -46,7 +47,9 @@ export const Education = () => {
                                 <p
                                     className = "font-semibold mt-2 text-md text-tertiary hover:text-secondary transition-all duration-300 glow-text-secondary"
                                 >
-                                    {exp.university}               {/* Uni */}
+                                    {exp.url
+                                        ? <a href = {exp.url} target = "_blank" rel = "noopener noreferrer" className = "hover:underline underline-offset-4">{exp.university}<ExternalLink className = "inline w-3.5 h-3.5 ml-1.5 -mt-0.5 opacity-70"/></a>
+                                        : exp.university}          {/* Uni */}
                                 </p>
                                 <p
                                     className = "font-medium mt-1 text-sm text-muted-foreground/80 hover:text-secondary  transition-all duration-300"

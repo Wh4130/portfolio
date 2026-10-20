@@ -1,4 +1,4 @@
-import { ArrowUpRight, ChevronDown, ChevronsDownUp, X, FunnelPlus, Github, ListFilter } from "lucide-react";
+import { ArrowUpRight, ChevronDown, ChevronsDownUp, X, FunnelPlus, Github, ListFilter, FileText } from "lucide-react";
 import { useState } from "react";
 
 import { AnimatedBorderButton } from "../components/AnimatedBorderButton";
@@ -130,10 +130,20 @@ export const Projects = () => {
                                 <div className="absolute inset-0 bg-linear-to-t from-card via-card/50 to-transparent opacity-60"/>
 
                                 <div className = "absolute inset-0 flex items-center justify-center gap-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                                    <a href={project.link} 
-                                       className="p-3 rounded-full glass-light hover:bg-secondary hover:text-tertiary-foreground transition-all">
-                                        <ArrowUpRight className="w-5 h-5" />
-                                    </a>
+                                    {project.link !== "" && (
+                                        <a href={project.link} 
+                                           className="p-3 rounded-full glass-light hover:bg-secondary hover:text-tertiary-foreground transition-all">
+                                            <ArrowUpRight className="w-5 h-5" />
+                                        </a>
+                                    )}
+                                    {project.pdf && (
+                                        <a href={project.pdf}
+                                           target="_blank"
+                                           rel="noopener noreferrer"
+                                           className="p-3 rounded-full glass-light hover:bg-secondary hover:text-tertiary-foreground transition-all">
+                                            <FileText className="w-5 h-5" />
+                                        </a>
+                                    )}
                                     {
                                         project.github != "" 
                                         ?

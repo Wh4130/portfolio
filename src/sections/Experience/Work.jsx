@@ -1,3 +1,4 @@
+import { ExternalLink } from "lucide-react"
 import { workExperience } from "../../lib/experience"
 
 export const Work = () => {
@@ -31,7 +32,7 @@ export const Work = () => {
 
                         {/* Content */}
                         <div 
-                            className={`pl-8 md:pl-0 ${idx % 2 === 0 ? "md:pr-16 md:text-right": "md:col-start-2 md:pl-16"}`}>
+                            className={`pl-8 md:pl-0 ${idx % 2 === 0 ? "md:pr-16": "md:col-start-2 md:pl-16"}`}>
                             <div
                                 className={`glass-strong p-6 rounded-2xl border border-primary/30 hover:border-primary/60 glow-border-primary transition-all duration-300 group`}
                             >
@@ -44,7 +45,9 @@ export const Work = () => {
                                 <p
                                     className = "font-semibold mt-2 text-md text-tertiary hover:text-highlight transition-all duration-300 glow-text-primary"
                                 >
-                                    {exp.company}                {/* Company */}
+                                    {exp.url
+                                        ? <a href = {exp.url} target = "_blank" rel = "noopener noreferrer" className = "hover:underline underline-offset-4">{exp.company}<ExternalLink className = "inline w-3.5 h-3.5 ml-1.5 -mt-0.5 opacity-70"/></a>
+                                        : exp.company}           {/* Company */}
                                 </p>
                                 <p
                                     className = "font-medium mt-1 text-sm text-muted-foreground/80 hover:text-highlight transition-all duration-300"
@@ -56,13 +59,15 @@ export const Work = () => {
                                 >
                                     {exp.period}｜{exp.location}  {/* Period & Location */}
                                 </span>
-                                <p
-                                    className = "mt-4 text-sm text-muted-foreground"
+                                <ul
+                                    className = "mt-4 space-y-2 text-sm text-muted-foreground"
                                 >
-                                    {exp.description}            {/* Description */}
-                                </p>
+                                    {exp.description.map((line, lineIdx) => (   // Description
+                                        <li key = {lineIdx}>{line}</li>
+                                    ))}
+                                </ul>
                                 <div
-                                    className = {`-mb-1 mt-1.5 -mx-1 flex flex-wrap gap-2 ${idx % 2 === 0 && "md:justify-end"}`}
+                                    className = {`-mb-1 mt-1.5 -mx-1 flex flex-wrap gap-2 `}
                                 >
                                     {                                // * skills
                                         exp.skills.map((skill, skillIdx) => (
