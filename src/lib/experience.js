@@ -73,7 +73,7 @@ export const educationHistory = [
         school: "School of Business Informatics and Mathematics",
         cumGPA: "",
         highlights: [],
-        tags: ["Large-Scale Data Management", "Advanced Software Engineering", "Web Data Integration", "AI Deployment and Operations"],
+        tags: ["Large-Scale Data Management", "Advanced Software Engineering", "Web Data Integration", "AI Deployment and Operations", "Production Management and Variability", "Supply Chain Data and Decision"],
         current: false
     },
     {

@@ -23,7 +23,7 @@ export const projects = [
         description: "A RAG-based Literature Review Tool that makes you organize your thoughts and manage your knowledge neatly. Used by friends for their own literature reviews, who found it helpful.",
         image: "/projects/easyessay.png",
         tags: ["Langchain", "Streamlit", "Pinecone", "FastAPI", "Render", "Pandas", "Cerebras", "LiteLLM"],
-        link: "https://easyessay-literature-review-toolkit-wally.streamlit.app/",
+        link: "https://easyessay-literature-review-toolkit-guest.streamlit.app/",
         github: "https://github.com/Wh4130/easyessay_literature_review_toolkit",
         category: ["ai"]
     },
