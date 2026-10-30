@@ -9,7 +9,7 @@ const Highlights = [
     {
         icon: Earth,
         title: "Multi-lingual proficiency",
-        description: "Fluent in Mandarin (native), English (C1) and Japanese (C1), with German (A1) in progress. Interpreted for Japanese client visits and studied across Taipei, Tokyo and Mannheim."
+        description: "Fluent in Mandarin (native), English (C1) and Japanese (C1), with German (A2). Interpreted for Japanese client visits and studied across Taipei, Tokyo and Mannheim."
     },
     {
         icon: Handshake,
