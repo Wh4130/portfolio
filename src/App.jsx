@@ -20,9 +20,9 @@ function App() {
       <main>
         <Hero/>
         <About/>
-        <Highlights/>
-        <Experience/>
         <Projects/>
+        <Experience/>
+        <Highlights/>
         <Contact/>
       </main>
       <Footer/>

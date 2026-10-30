@@ -1,23 +1,35 @@
 import { Button } from "@/components/Button";
 import { AnimatedBorderButton } from "@/components/AnimatedBorderButton";
 import { FloatingParticles } from "@/components/FloatingParticles";
+import { SkillMarquee } from "@/components/SkillMarquee";
 import { ArrowRight, ChevronDown, Download } from "lucide-react";
 import { socialLinks } from "../lib/socialLinks";
 
 
 
 const skills = [
+    "Python",
     "LangGraph",
     "LangChain",
     "FastMCP",
     "RAG",
-    "Text2SQL",
+    "Claude & OpenAI APIs",
     "FastAPI",
-    "PostgreSQL",
-    "BigQuery",
     "Pandas",
+    "SQLAlchemy",
+    "PostgreSQL",
+    "MySQL",
+    "MongoDB",
+    "Firestore",
+    "BigQuery",
+    "Databricks",
+    "Spark",
     "Docker",
-    "GCP"
+    "GitHub Actions",
+    "GCP",
+    "Azure",
+    "TypeScript",
+    "React"
 ];
 
 export const Hero = () => {
@@ -128,17 +140,9 @@ export const Hero = () => {
 
                 {/* Skills */}
                 <div className="mt-20 animate-fade-in animation-delay-600">
-                    <p className="text-sm text-muted-foreground mb-6 text-center uppercase font-medium">Technology I work with</p>
+                    <p className="text-sm text-muted-foreground mb-6 text-center uppercase font-medium">Technology I've worked with</p>
                     {/* Categorized by field */}
-                    <div className="relative overflow-hidden">
-                        <div className="flex animate-marquee">
-                            {[...skills, ...skills].map((skill, idx) => (
-                                <div key={idx} className="shrink-0 px-8 py-4">
-                                    <span className="glow-text-primary text-xl font-semibold text-muted-foreground/50 hover:text-muted-foreground transition-colors">{skill}</span>
-                                </div>
-                            ))}
-                        </div>
-                    </div>
+                    <SkillMarquee items={skills}/>
                     
                 </div>
             </div>
