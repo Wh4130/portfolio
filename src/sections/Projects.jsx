@@ -4,7 +4,7 @@ import { useState } from "react";
 import { AnimatedBorderButton } from "../components/AnimatedBorderButton";
 import { Button } from "../components/Button";
 import { Select } from "../components/Select";
-import { projects, categories, tags } from "@/lib/projects"
+import { projects, categories, skills, sortOptions, formatPeriod } from "@/lib/projects"
 
 
 
@@ -14,22 +14,23 @@ export const Projects = () => {
     // ** Initialization
     const [showFilters, setShowFilters] = useState(false);
     const [catFilters, setCatFilters] = useState([]);          // 用於儲存類別篩選器之值
-    const [tagFilters, setTagFilters] = useState([]);          // 用於儲存標籤篩選器之值
+    const [skillFilters, setSkillFilters] = useState([]);      // 用於儲存技能篩選器之值
+    const [sortIdx, setSortIdx] = useState(0);                 // 目前排序方式（sortOptions 的索引）
     const filteredProjects = projects.filter(proj => {         // 篩選後的專案列表
-            if (catFilters.length === 0 && tagFilters.length === 0) {  // 若沒選，顯示全部
+            if (catFilters.length === 0 && skillFilters.length === 0) {  // 若沒選，顯示全部
                 return true
-            } else if (catFilters.length === 0) {                      // 只有標籤篩選器
-                return tagFilters.some(filter => proj.tags.includes(filter.value));
-            } else if (tagFilters.length === 0) {                      // 只有類別篩選器
+            } else if (catFilters.length === 0) {                      // 只有技能篩選器
+                return skillFilters.some(filter => proj.skills.includes(filter.value));
+            } else if (skillFilters.length === 0) {                    // 只有類別篩選器
                 return catFilters.some(filter => proj.category.includes(filter.value))
             } else {
                 return (
                     catFilters.some(filter => proj.category.includes(filter.value)) &&
-                    tagFilters.some(filter => proj.tags.includes(filter.value))
+                    skillFilters.some(filter => proj.skills.includes(filter.value))
                 )
             }
         }
-    )
+    ).sort(sortOptions[sortIdx].compare)
     const initProjCount = 4;                                         
     const [visibleCount, setVisibleCount] = useState(initProjCount);       // 用於決定要顯示多少 project
     const handleLoadMore = () => {
@@ -71,7 +72,7 @@ export const Projects = () => {
                                         onClick = {() => {
                                             setShowFilters(!showFilters);
                                             setCatFilters([]);
-                                            setTagFilters([])
+                                            setSkillFilters([])
                                         }}
                                 >
                                     {showFilters ? 
@@ -97,13 +98,13 @@ export const Projects = () => {
                             </div>
                             <div >
                                 <Select
-                                key = "tag-filter" 
+                                key = "skill-filter"
                                 withIcon={true}
-                                options={tags}
+                                options={skills}
                                 lineColors={{primaryColor: "#ccdee8", secondaryColor: "#e7ebd3"}}
-                                selectedOption={tagFilters} 
-                                setSelectedOption={setTagFilters}
-                                label="Filter by Tag"
+                                selectedOption={skillFilters}
+                                setSelectedOption={setSkillFilters}
+                                label="Filter by Skill"
                                 placeholder=""
                                 textClassName="!text-tertiary"
                                 boxClassName="m-4"/>
@@ -111,9 +112,22 @@ export const Projects = () => {
                         </div>
                     )}
                 </div>
-                
-                
-                
+                {/* 排序器 Sort */}
+                <div className="flex items-center justify-center gap-2 mb-8 text-sm text-tertiary">
+                    <span className="font-medium mr-1">Sort</span>
+                    {sortOptions.map((option, idx) => (
+                        <button key={option.label}
+                                onClick={() => setSortIdx(idx)}
+                                className={`px-4 py-1 rounded-full border transition-all duration-300 ${
+                                    sortIdx === idx
+                                        ? "bg-tertiary/20 border-tertiary/60"
+                                        : "bg-transparent border-tertiary/30 hover:border-tertiary/60"
+                                }`}>
+                            {option.label}
+                        </button>
+                    ))}
+                </div>
+
                 {/* Projects Grid */}
                 <div className="grid md:grid-cols-2 gap-8">
                     {filteredProjects.slice(0, visibleCount).map((project, idx) => (
@@ -123,9 +137,13 @@ export const Projects = () => {
 
                             {/* Image div and Overlay Link */}
                             <div className="relative overflow-hidden aspect-video">
-                                <img src={`${project.image}`} 
-                                     alt={`${project.title}`} 
-                                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
+                                {project.image ? (
+                                    <img src={`${project.image}`}
+                                         alt={`${project.title}`}
+                                         className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
+                                ) : (
+                                    <div className="w-full h-full bg-linear-to-br from-primary/20 to-tertiary/20"/>
+                                )}
 
                                 <div className="absolute inset-0 bg-linear-to-t from-card via-card/50 to-transparent opacity-60"/>
 
@@ -164,14 +182,23 @@ export const Projects = () => {
                                     <h3 className="text-xl font-semibold group-hover:text-primary transition-colors duration-300 glow-text-primary">{project.title}</h3>
                                     <ArrowUpRight className="w-5 h-5 text-muted-foreground group-hover:text-primary group-hover:translate-x-1 group-hover:translate-y-1 transition-all duration-300" />
                                 </div>
+                                <p className="text-xs text-muted-foreground/70 -mt-2">{formatPeriod(project.period)}</p>
                                 <p className="text-muted-foreground text-sm">{project.description}</p>
                                 <div className="flex flex-wrap gap-2">
-                                    {project.tags.map(( tag, tagIdx ) => (
-                                        <span 
-                                            key={tagIdx}
+                                    {project.skills.map(( skill, skillIdx ) => (
+                                        <span
+                                            key={skillIdx}
                                             className="px-4 py-1.5 rounded-full bg-surface text-xs font-medium border-border border text-muted-foreground/70 hover:text-muted-foreground/90 hover:border-primary transition-all duration-300 "
                                         >
-                                                {tag}
+                                                {skill}
+                                        </span>
+                                    ))}
+                                    {project.topics.map(( topic, topicIdx ) => (
+                                        <span
+                                            key={topicIdx}
+                                            className="px-4 py-1.5 rounded-full text-xs font-medium border bg-secondary/10 border-secondary/30 text-secondary/80 hover:border-secondary/60 transition-all duration-300"
+                                        >
+                                                {topic}
                                         </span>
                                     ))}
                                 </div>
